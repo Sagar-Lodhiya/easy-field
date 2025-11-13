@@ -1,100 +1,93 @@
 📊 EasyField – Admin Panel (Web Dashboard)
 
-The EasyField Admin Panel is a web-based dashboard designed for administrators and supervisors to manage field operations, assign tasks, track agent activity, review expenses, and monitor real-time field performance.
-It acts as the central control system of the EasyField platform and works in sync with the Android mobile application via Firebase backend services.
+The EasyField Admin Panel is a web-based dashboard built to manage field operations, assign tasks, monitor real-time agent activity, review expenses, and analyze overall workforce performance.
+It syncs seamlessly with the EasyField Android Application using Firebase backend services.
 
 🚀 Features
 🧑‍💼 Admin Features
 
-Create, assign, update, and delete tasks for field agents
+Assign, update, and manage tasks
 
-Approve or reject expense submissions
+Monitor real-time agent tracking
 
-Monitor real-time agent tracking and geo-tagged visits
+Approve or reject expenses
 
-View activity timelines, visit logs, and task progress
+Review geo-tagged visit logs
 
-Download or export reports (tasks, visits, expenses)
+Generate performance reports
 
 👨‍🏫 Supervisor Features
 
-Review team performance
+View team activity and analytics
 
-View summarized analytics and dashboards
+Validate completed tasks and visits
 
-Access logs of completed tasks & visits
-
-Validate field activity for auditing
+Oversee expense submissions
 
 🔐 Authentication
 
-Firebase Authentication (Admin + Supervisor access)
+Firebase Authentication (Admin & Supervisor login)
 
-Secure role-based access control
+Role-based access control
 
-🛠️ Technology Stack (Admin Panel)
-Component	Technology
-Framework	PHP (Yii Framework)
-Frontend	HTML5, CSS3, JavaScript, Bootstrap
-Backend	PHP (MVC Architecture)
-Database	MySQL
-Realtime Sync	Firebase Firestore
-Authentication	Firebase Auth (Admin Login)
-Storage	Firebase Cloud Storage
-Maps	Google Maps API (for location & tracking)
-CMS Integration	WordPress (optional for content pages)
-🧩 System Architecture (Admin Panel Only)
+| Component       | Technology                         |
+| --------------- | ---------------------------------- |
+| Framework       | PHP (Yii Framework)                |
+| Frontend        | HTML5, CSS3, Bootstrap, JavaScript |
+| Backend         | PHP (MVC Architecture)             |
+| Database (Web)  | MySQL                              |
+| Realtime Sync   | Firebase Firestore                 |
+| Authentication  | Firebase Authentication            |
+| File Storage    | Firebase Cloud Storage             |
+| Maps            | Google Maps API                    |
+| CMS Integration | WordPress (optional)               |
 
-The Admin Panel follows MVC (Model–View–Controller):
+
+🧩 System Architecture (Admin Panel)
+
+The Admin Panel follows the MVC Architecture:
 
 Model
 
-Handles MySQL database operations
+Handles MySQL CRUD operations
 
-Integrates Firebase Admin SDK for real-time updates
+Integrates Firebase Admin SDK for real-time sync
 
-Manages tasks, expenses, agent profiles, and analytics
+Manages tasks, agents, visits, and expenses
 
 View
 
-Responsive UI built with Bootstrap
+Dashboard UI built with Bootstrap
 
-Displays dashboards, tables, statistics, visit logs
-
-Admin forms for task creation and expense review
+Responsive pages for tasks, visits, expenses, analytics
 
 Controller
 
-Handles incoming admin/supervisor requests
+Processes admin & supervisor actions
 
-Processes data and serves responses to views
+Handles routing and data validation
 
-Manages routing between pages
+Connects views with backend logic
 
-📂 Project Structure
 AdminPanel/
-├── assets/               # CSS, JS, images
-├── config/               # Yii configuration files
-├── controllers/          # Main controllers (TaskController, AdminController)
-├── models/               # Database models (Task.php, Agent.php, Expense.php)
-├── views/                # All UI pages
-│   ├── dashboard/
-│   ├── tasks/
-│   ├── expenses/
-│   ├── login/
-│   └── analytics/
-├── firebase/             # Firebase Admin SDK configuration
+├── assets/               # CSS, JS, media files
+├── config/               # Yii framework configuration
+├── controllers/          # Controllers (Admin, Task, Expense, Visit)
+├── models/               # Web app + Firebase models
+├── views/                # UI templates (dashboard, tasks, expenses, etc.)
+├── firebase/             # Firebase Admin SDK setup
 ├── index.php             # Entry point
 └── README.md
 
 🔧 Installation & Setup
-1. Clone the repository
+1️⃣ Clone the repository
+
 git clone https://github.com/yourusername/easyfield-admin-panel.git
 cd easyfield-admin-panel
 
-2. Install dependencies
+2️⃣ Install dependencies
 
-Required:
+Requirements:
 
 PHP 7.4+
 
@@ -102,118 +95,97 @@ Composer
 
 MySQL Server
 
-Firebase Admin PHP SDK
+Firebase Admin SDK
 
-Run:
+Install dependencies:
 
 composer install
 
-3. Configure MySQL
+3️⃣ Setup MySQL Database
 
-Import the database schema:
+Create database:
 
 mysql -u root -p easyfield < database/schema.sql
+Configure config/db.php:
 
-
-Update config/db.php:
-
+php
+Copy code
 'dsn' => 'mysql:host=localhost;dbname=easyfield',
 'username' => 'root',
 'password' => '',
+4️⃣ Configure Firebase
+Place Firebase key:
 
-4. Configure Firebase Admin SDK
+bash
+Copy code
+firebase/serviceAccountKey.json
+Initialize in:
 
-Place the Firebase Admin SDK key file:
-
-/firebase/serviceAccountKey.json
-
-
-Update Firebase config in:
-
+bash
+Copy code
 firebase/firebase_init.php
-
-5. Run the server
+5️⃣ Run the Application
+bash
+Copy code
 php yii serve
+Visit:
 
-
-Access the dashboard:
-
+arduino
+Copy code
 http://localhost:8080
+🌐 User Roles
+🔹 Admin
+Full access
 
-🌐 Admin Roles
-Admin
+Task creation & monitoring
 
-Assign tasks
+Expense approval
 
-Track real-time locations
+Detailed analytics
 
-Monitor all agents
+🔹 Supervisor
+View dashboards
 
-Approve expenses
+Review visit logs
 
-Generate reports
-
-Supervisor
-
-Review logs & analytics
-
-Validate task completion
-
-Oversee teams
-
-View summaries
+Validate tasks
 
 🔐 Security
+Firebase-secured login
 
-Role-based access control (RBAC)
+RBAC (Admin / Supervisor)
 
-Firebase Authentication login
+MySQL prepared statements
 
-Server-side validation for every action
+Protected API keys
 
-MySQL protected with prepared statements
-
-Secure API key handling
-
-📑 API Integrations
-
-Firebase Authentication for login
-
-Firestore for real-time task/visit sync
-
-Cloud Storage for expense image uploads
-
-Google Maps API for visualization
+Firebase Security Rules
 
 🧪 Testing
+Unit testing for models and controllers
 
-Manual and automated testing for UI
+Firebase Emulator for safe testing
 
-PHP Unit tests for Models and Controllers
+Browser testing (Chrome & Firefox)
 
-Firebase emulator used for safe testing
+MySQL test database for integration tests
 
-MySQL test database for integration testing
+🚧 Future Enhancements
+AI-based workload prediction
 
-📈 Future Enhancements
+Auto-task assignment
 
-AI-based performance analytics
+In-app chat (admin ↔ agent)
 
-Predictive task assignment
+PDF/Excel analytics exports
 
-Chat system between admin & field agents
-
-Multi-language dashboard
-
-Bulk task upload (Excel/CSV)
+Multi-language support
 
 👨‍💻 Developer
-
 Lodhiya Sagar Mahendrabhai (M25CSE017)
 Indian Institute of Technology, Jodhpur
 Guided by Dr. Sumit Karla
 
 📜 License
-
-This Admin Panel is part of the EasyField Major Project under
+This Admin Dashboard is part of the EasyField Major Project for
 Software Data Engineering (CSL7090).
